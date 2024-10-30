@@ -1,5 +1,8 @@
 package inventario.menu;
 
+import inventario.service.Ventas;
+import inventario.utils.Utilidades;
+
 // Menu.java
 public class Menu {
     private Ventas ventas;

@@ -1,6 +1,10 @@
 package inventario.service;
 
 // Ventas.java
+import inventario.model.Carrito;
+import inventario.model.Producto;
+import inventario.utils.Utilidades;
+
 import java.util.ArrayList;
 import java.util.List;
 
