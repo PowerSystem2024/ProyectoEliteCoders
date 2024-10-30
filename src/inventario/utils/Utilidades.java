@@ -4,7 +4,7 @@ package inventario.utils;
 import java.util.Scanner;
 
 public class Utilidades {
-    private static final Scanner scanner = new Scanner(System.in);
+    public static final Scanner scanner = new Scanner(System.in);
 
     public static int obtenerOpcion(int maxOpciones) {
         int opcion;
