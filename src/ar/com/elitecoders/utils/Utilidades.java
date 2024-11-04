@@ -41,7 +41,7 @@ public class Utilidades {
     }
 
     public static void limpiarPantalla() {
-        System.out.println("\n".repeat(50));
+        System.out.println("\n".repeat(3));
     }
 
     public static void esperarEntrada() {

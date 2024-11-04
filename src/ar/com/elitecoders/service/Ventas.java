@@ -5,8 +5,9 @@ import ar.com.elitecoders.model.Carrito;
 import ar.com.elitecoders.model.Producto;
 import ar.com.elitecoders.utils.Utilidades;
 
-import java.util.ArrayList;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Ventas {
     private Carrito carrito;
@@ -41,7 +42,7 @@ public class Ventas {
         List<Producto> disponibles = Stock.productos
                 .stream()
                 .filter(p -> p.getStock() > 0)
-                .toList();
+                .collect(Collectors.toList());
         Utilidades.imprimirProductos(disponibles);
 
         System.out.print("Ingrese el nombre del producto a comprar: ");
