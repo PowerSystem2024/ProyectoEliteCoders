@@ -1,19 +1,19 @@
-package inventario.service;
+package ar.com.elitecoders.service;
 
 // Ventas.java
-import java.util.ArrayList;
+import ar.com.elitecoders.model.Carrito;
+import ar.com.elitecoders.model.Producto;
+import ar.com.elitecoders.utils.Utilidades;
+
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Ventas {
-    private List<Producto> productos;
     private Carrito carrito;
 
     public Ventas() {
-        productos = new ArrayList<>();
         carrito = new Carrito();
-        productos.add(new Producto("Producto 1", 100, 10.5));
-        productos.add(new Producto("Producto 2", 50, 20.0));
-        productos.add(new Producto("Producto 3", 0, 15.0)); // Sin stock
     }
 
     public void iniciarVentas() {
@@ -23,26 +23,31 @@ public class Ventas {
             System.out.println("Ventas:");
             System.out.println("1. Cargar productos al carrito");
             System.out.println("2. Ver carrito");
-            System.out.println("3. Volver al menú principal");
-            opcion = Utilidades.obtenerOpcion(3);
+            System.out.println("3. Vaciar carrito");
+            System.out.println("4. Volver al menú principal");
+            opcion = Utilidades.obtenerOpcion(4);
 
             switch (opcion) {
                 case 1 -> venta();
                 case 2 -> carrito.mostrarCarrito();
+                case 3 -> carrito.vaciarCarrito();
             }
             Utilidades.esperarEntrada();
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
 
     private void venta() {
         Utilidades.limpiarPantalla();
         System.out.println("Productos disponibles:");
-        mostrarProductos();
+        List<Producto> disponibles = Stock.productos
+                .stream()
+                .filter(p -> p.getStock() > 0)
+                .collect(Collectors.toList());
+        Utilidades.imprimirProductos(disponibles);
 
         System.out.print("Ingrese el nombre del producto a comprar: ");
         String nombreProducto = Utilidades.scanner.nextLine();
         Producto producto = buscarProducto(nombreProducto);
-
         if (producto == null || producto.getStock() <= 0) {
             System.out.println("Producto no disponible.");
         } else {
@@ -56,14 +61,8 @@ public class Ventas {
         }
     }
 
-    private void mostrarProductos() {
-        productos.stream()
-                .filter(p -> p.getStock() > 0)
-                .forEach(System.out::println);
-    }
-
     private Producto buscarProducto(String nombre) {
-        return productos.stream()
+        return Stock.productos.stream()
                 .filter(p -> p.getNombre().equalsIgnoreCase(nombre))
                 .findFirst()
                 .orElse(null);

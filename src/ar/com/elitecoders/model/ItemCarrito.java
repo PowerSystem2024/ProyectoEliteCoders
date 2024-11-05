@@ -1,4 +1,4 @@
-package inventario.model;
+package ar.com.elitecoders.model;
 
 // ItemCarrito.java
 public class ItemCarrito {

@@ -1,4 +1,6 @@
-package inventario;
+package ar.com.elitecoders;
+
+import ar.com.elitecoders.menu.Menu;
 
 // SistemaInventario.java
 public class SistemaInventario {
