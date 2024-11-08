@@ -14,6 +14,9 @@ public class Menu {
         this.stock = new Stock();
     }
 
+    /**
+     * Metodo para mostrar el menu principal con sus opciones
+     */
     public void mostrarMenuPrincipal() {
         int opcion;
         do {

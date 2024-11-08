@@ -13,6 +13,9 @@ public class Stock  {
     public static List<Producto> productos = Utilidades.getInventarioInicial();
     private static Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Muestra las opciones disponibles del inventario
+     */
     public void iniciarInventario() {
         int opcion;
         do {
@@ -54,6 +57,9 @@ public class Stock  {
         return producto;
     }
 
+    /**
+     * Agrega productos al inventario solicitando datos por consola
+     */
     public void agregarProducto() {
         System.out.println("\nAgregando producto");
         Producto producto = leerProductoPorTeclado();
@@ -61,6 +67,9 @@ public class Stock  {
         System.out.println("\nProducto agregado correctamente");
     }
 
+    /**
+     * Modifica productos según su nombre, permitiendo cambiar todos sus datos
+     */
     public void modificarProducto() {
         System.out.println("\nModificando producto");
         System.out.print("Ingrese el nombre del producto a modificar: ");
@@ -83,6 +92,10 @@ public class Stock  {
         System.out.println("\nProducto modificado correctamente");
     }
 
+    /**
+     * Elimina producto buscándolo por nombre. Se valida que el producto exista,
+     * y que no se encuentre cargado en el carrito.
+     */
     public void eliminarProducto() {
         System.out.println("\nEliminando producto");
         System.out.print("Ingrese el nombre del producto a eliminar: ");

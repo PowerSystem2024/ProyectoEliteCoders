@@ -7,9 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase con métodos que se utilizan en toda la app
+ */
 public class Utilidades {
     public static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Selector dinámico de opciones ingresadas por teclado
+     * @param maxOpciones máximo de opciones disponibles
+     * @return opción elegida por el usuario
+     */
     public static int obtenerOpcion(int maxOpciones) {
         int opcion;
         while (true) {
@@ -25,6 +33,10 @@ public class Utilidades {
         return opcion;
     }
 
+    /**
+     * Obtiene una cantidad ingresada por teclado, la cual debe ser mayor a cero
+     * @return cantidad ingresada por usuario
+     */
     public static int obtenerCantidad() {
         int cantidad;
         while (true) {
@@ -40,15 +52,25 @@ public class Utilidades {
         return cantidad;
     }
 
+    /**
+     * Limpia consola dejandola lista para siguientes impresiones
+     */
     public static void limpiarPantalla() {
         System.out.println("\n".repeat(3));
     }
 
+    /**
+     * Espera a que el usuario presione enter para continuar con la ejecución
+     */
     public static void esperarEntrada() {
         System.out.println("Presione Enter para continuar...");
         scanner.nextLine();
     }
 
+    /**
+     * Se obtiene el listado inicial de productos
+     * @return Lista de productos
+     */
     public static List<Producto> getInventarioInicial() {
         List<Producto> productos = new ArrayList<>();
 
@@ -61,6 +83,10 @@ public class Utilidades {
         return productos;
     }
 
+    /**
+     * Imprime listado de productos
+     * @param productos productos a imprimir
+     */
     public static void imprimirProductos(List<Producto> productos) {
         int maxNombre = 20; // Longitud del título de la columna
         int maxStock = 5;
