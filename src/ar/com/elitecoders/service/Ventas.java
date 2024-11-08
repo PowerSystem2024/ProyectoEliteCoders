@@ -16,6 +16,9 @@ public class Ventas {
         carrito = new Carrito();
     }
 
+    /**
+     * Imprime por consola las opciones de venta
+     */
     public void iniciarVentas() {
         int opcion;
         do {
@@ -36,6 +39,9 @@ public class Ventas {
         } while (opcion != 4);
     }
 
+    /**
+     * Imprime los productos disponibles (cuyo stock es mayor a cero) y permite agregarlos al carrito
+     */
     private void venta() {
         Utilidades.limpiarPantalla();
         System.out.println("Productos disponibles:");
@@ -61,6 +67,11 @@ public class Ventas {
         }
     }
 
+    /**
+     * Busca productos en el stock
+     * @param nombre nombre del producto a buscar
+     * @return Producto encontrado o null
+     */
     private Producto buscarProducto(String nombre) {
         return Stock.productos.stream()
                 .filter(p -> p.getNombre().equalsIgnoreCase(nombre))
