@@ -9,14 +9,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Clase carrito
+ */
 public class Carrito {
+    // Lista de items, de tipo ItemCarrito
     private static List<ItemCarrito> items = new ArrayList<>();
 
+    /**
+     * Agregar items al carrito. Con el producto y cantidad que se recibe
+     * se crea un ItemCarrito y se agrega a la lista de items
+     * @param producto producto a agregar
+     * @param cantidad cantidad del producto a agregar
+     */
     public void agregarItem(Producto producto, int cantidad) {
         items.add(new ItemCarrito(producto, cantidad));
         producto.reducirStock(cantidad);
     }
 
+    /**
+     * Imprimir carrito por consola
+     */
     public void mostrarCarrito() {
         if (items.isEmpty()) {
             System.out.println("El carrito se encuentra vacío");
@@ -34,6 +47,10 @@ public class Carrito {
         }
     }
 
+    /**
+     * Vacía todos los productos del carrito, y a su vez repone las cantidades que
+     * se sustrajeron del stock
+     */
     public void vaciarCarrito() {
         System.out.print("\n¿Está seguro que quiere vaciar el carrito? (si/no)");
         String respuesta = Utilidades.scanner.nextLine();
@@ -56,6 +73,11 @@ public class Carrito {
         System.out.println("\n¡Carrito vaciado con éxito!");
     }
 
+    /**
+     * Verifica que X producto se encuentre en el carrito
+     * @param nombreProducto nombre del producto a buscar
+     * @return verdadero o falso dependiendo si encuentra o no el producto
+     */
     public static boolean tieneProducto(String nombreProducto) {
         return items
                 .stream()
